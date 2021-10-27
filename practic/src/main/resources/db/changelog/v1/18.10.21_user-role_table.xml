@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="user-role_1" author="ilia">
+        <createTable tableName="user_role">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user-role_id" />
+            </column>
+            <column name="user_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_user" references="user(id)"/>
+            </column>
+            <column name="role_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_role" references="role(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="user-role_2" author="ilia">
+        <insert tableName="user_role">
+            <column name="user_id">1</column>
+            <column name="role_id">1</column>
+        </insert>
+        <insert tableName="user_role">
+            <column name="user_id">2</column>
+            <column name="role_id">2</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

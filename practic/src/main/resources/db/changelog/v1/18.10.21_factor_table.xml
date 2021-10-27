@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="factor_1" author="ilia">
+        <createTable tableName="factor">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_factor_id" />
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="m_critic_male" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="q_critic_male" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="m_critic_female" type="double">
+                <constraints nullable="false"/>
+            </column>
+            <column name="q_critic_female" type="double">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="factor_2" author="ilia">
+        <insert tableName="factor">
+            <column name="name">Планомерность</column>
+            <column name="m_critic_male">19.03</column>
+            <column name="q_critic_male">4.61</column>
+            <column name="m_critic_female">17.41</column>
+            <column name="q_critic_female">5.43</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Целеустремленность</column>
+            <column name="m_critic_male">32.96</column>
+            <column name="q_critic_male">4.79</column>
+            <column name="m_critic_female">32.48</column>
+            <column name="q_critic_female">7.13</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Настойчивость</column>
+            <column name="m_critic_male">19.57</column>
+            <column name="q_critic_male">5.49</column>
+            <column name="m_critic_female">22.19</column>
+            <column name="q_critic_female">6.21</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Фиксация</column>
+            <column name="m_critic_male">19.19</column>
+            <column name="q_critic_male">4.75</column>
+            <column name="m_critic_female">18.47</column>
+            <column name="q_critic_female">5.45</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Самоорганизация</column>
+            <column name="m_critic_male">19.99</column>
+            <column name="q_critic_male">5</column>
+            <column name="m_critic_female">9.49</column>
+            <column name="q_critic_female">4.14</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Ориентация на настоящие</column>
+            <column name="m_critic_male">8.51</column>
+            <column name="q_critic_male">1.86</column>
+            <column name="m_critic_female">8.27</column>
+            <column name="q_critic_female">3.19</column>
+        </insert>
+        <insert tableName="factor">
+            <column name="name">Общий показатель</column>
+            <column name="m_critic_male">109.24</column>
+            <column name="q_critic_male">15.13</column>
+            <column name="m_critic_female">108.3</column>
+            <column name="q_critic_female">19.02</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="answer_1" author="ilia">
+        <createTable tableName="answer">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_answer_id" />
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="answer_text" type="clob"></column>
+            <column name="points" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="answer_2" author="ilia">
+        <insert tableName="answer">
+            <column name="number">1</column>
+            <column name="answer_text">Абсолютное несогласие</column>
+            <column name="points">1</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">2</column>
+            <column name="answer_text">Несогласие</column>
+            <column name="points">2</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">3</column>
+            <column name="answer_text">Частичное несогласие</column>
+            <column name="points">3</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">4</column>
+            <column name="answer_text">Ни то, ни другое</column>
+            <column name="points">4</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">5</column>
+            <column name="answer_text">Частичное согласие</column>
+            <column name="points">5</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">6</column>
+            <column name="answer_text">Согласие</column>
+            <column name="points">6</column>
+        </insert>
+        <insert tableName="answer">
+            <column name="number">7</column>
+            <column name="answer_text">Абсолютное согласие</column>
+            <column name="points">7</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

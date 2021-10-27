@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="result_1" author="ilia">
+        <createTable tableName="result">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_result_id" />
+            </column>
+            <column name="description" type="clob"></column>
+            <column name="factor_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_factor_result" references="factor(id)"/>
+            </column>
+            <column name="attempt_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_attempt_result" references="attempt(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="result_2" author="ilia">
+        <insert tableName="result">
+            <column name="description">все плохо</column>
+            <column name="factor_id">1</column>
+            <column name="attempt_id">1</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

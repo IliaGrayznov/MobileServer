@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="attempt_1" author="ilia">
+        <createTable tableName="attempt">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_attempt_id" />
+            </column>
+            <column name="number" type="int"></column>
+            <column name="user_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_user_attempt" references="user(id)"/>
+            </column>
+            <column name="finished" type="boolean"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="attempt_2" author="ilia">
+        <insert tableName="attempt">
+            <column name="number">1</column>
+            <column name="user_id">2</column>
+            <column name="finished">false</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

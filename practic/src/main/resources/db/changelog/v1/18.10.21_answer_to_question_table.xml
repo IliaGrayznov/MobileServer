@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="answer_to_question_1" author="ilia">
+        <createTable tableName="answer_to_question">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_answer_to-question_id" />
+            </column>
+            <column name="user_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_user_attempt" references="user(id)"/>
+            </column>
+            <column name="attempt_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_attempt" references="attempt(id)"/>
+            </column>
+            <column name="answer_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_answer" references="answer(id)"/>
+            </column>
+            <column name="question_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_question" references="question(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="answer_to_question_2" author="ilia">
+        <insert tableName="answer_to_question">
+            <column name="user_id">2</column>
+            <column name="attempt_id">1</column>
+            <column name="answer_id">3</column>
+            <column name="question_id">1</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="user_id">2</column>
+            <column name="attempt_id">1</column>
+            <column name="answer_id">2</column>
+            <column name="question_id">2</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="user_id">2</column>
+            <column name="attempt_id">1</column>
+            <column name="answer_id">5</column>
+            <column name="question_id">3</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="user_id">2</column>
+            <column name="attempt_id">1</column>
+            <column name="answer_id">7</column>
+            <column name="question_id">4</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="user_id">2</column>
+            <column name="attempt_id">1</column>
+            <column name="answer_id">4</column>
+            <column name="question_id">5</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

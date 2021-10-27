@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="user_1" author="ilia">
+        <createTable tableName="user">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_id" />
+            </column>
+            <column name="username" type="varchar(100)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="password" type="TEXT"></column>
+            <column name="age" type="int"></column>
+            <column name="sexM" type="boolean"></column>
+        </createTable>
+    </changeSet>
+
+    <!--name==password-->
+    <changeSet id="user_2" author="ilia">
+        <insert tableName="user">
+            <column name="username">admin</column>
+            <column name="password">$2a$10$eJGaKQhfPi7t/UYcluBwLOnhgYGpZv1r4SFPSd2BvA2tVJWGSbFNa</column>
+            <column name="age">37</column>
+            <column name="sexM">true</column>
+        </insert>
+        <insert tableName="user">
+            <column name="username">mortal</column>
+            <column name="password">$2a$10$z8/txvWANw/AzmKOJR5TAeKZ2vPVlauQd/JU/kWSvE66fzLWpS6AO</column>
+            <column name="age">20</column>
+            <column name="sexM">true</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

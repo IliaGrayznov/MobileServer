@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="question_1" author="ilia">
+        <createTable tableName="question">
+            <column name="id" type="bigserial" autoIncrement="true" >
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_question_id" />
+            </column>
+            <column name="number" type="int">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="question_text" type="clob"></column>
+            <column name="plus" type="boolean"></column>
+            <column name="factor_id" type="bigserial">
+                <constraints nullable="false" foreignKeyName="fk_factor" references="factor(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="question_2" author="ilia">
+        <insert tableName="question">
+            <column name="number">1</column>
+            <column name="question_text">Мне требуется много времени, чтобы «раскачаться» и начать действовать</column>
+            <column name="plus">false</column>
+            <column name="factor_id">3</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">2</column>
+            <column name="question_text">Я планирую мои дела ежедневно</column>
+            <column name="plus">true</column>
+            <column name="factor_id">1</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">3</column>
+            <column name="question_text">Меня выводят из себя и выбивают из привычного графика непредвиденные дела</column>
+            <column name="plus">true</column>
+            <column name="factor_id">4</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">4</column>
+            <column name="question_text">Обычно я намечаю программу на день и стараюсь ее выполнить</column>
+            <column name="plus">true</column>
+            <column name="factor_id">1</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">5</column>
+            <column name="question_text">Мне бывает трудно завершить начатое</column>
+            <column name="plus">false</column>
+            <column name="factor_id">3</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
