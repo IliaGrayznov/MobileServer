@@ -11,16 +11,13 @@
             <column name="id" type="bigserial" autoIncrement="true" >
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_answer_to-question_id" />
             </column>
-            <column name="user_id" type="bigserial">
-                <constraints nullable="false" foreignKeyName="fk_user_attempt" references="user(id)"/>
+            <column name="attempt_id" type="bigint">
+                <constraints nullable="true" foreignKeyName="fk_attempt" references="attempt(id)"/>
             </column>
-            <column name="attempt_id" type="bigserial">
-                <constraints nullable="false" foreignKeyName="fk_attempt" references="attempt(id)"/>
-            </column>
-            <column name="answer_id" type="bigserial">
+            <column name="answer_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_answer" references="answer(id)"/>
             </column>
-            <column name="question_id" type="bigserial">
+            <column name="question_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_question" references="question(id)"/>
             </column>
         </createTable>
@@ -28,34 +25,130 @@
 
     <changeSet id="answer_to_question_2" author="ilia">
         <insert tableName="answer_to_question">
-            <column name="user_id">2</column>
             <column name="attempt_id">1</column>
             <column name="answer_id">3</column>
             <column name="question_id">1</column>
         </insert>
         <insert tableName="answer_to_question">
-            <column name="user_id">2</column>
             <column name="attempt_id">1</column>
             <column name="answer_id">2</column>
             <column name="question_id">2</column>
         </insert>
         <insert tableName="answer_to_question">
-            <column name="user_id">2</column>
             <column name="attempt_id">1</column>
             <column name="answer_id">5</column>
             <column name="question_id">3</column>
         </insert>
         <insert tableName="answer_to_question">
-            <column name="user_id">2</column>
             <column name="attempt_id">1</column>
             <column name="answer_id">7</column>
             <column name="question_id">4</column>
         </insert>
         <insert tableName="answer_to_question">
-            <column name="user_id">2</column>
             <column name="attempt_id">1</column>
             <column name="answer_id">4</column>
             <column name="question_id">5</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">7</column>
+            <column name="question_id">6</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">2</column>
+            <column name="question_id">7</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">3</column>
+            <column name="question_id">8</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">5</column>
+            <column name="question_id">9</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">1</column>
+            <column name="question_id">10</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">2</column>
+            <column name="question_id">11</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">7</column>
+            <column name="question_id">12</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">6</column>
+            <column name="question_id">13</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">4</column>
+            <column name="question_id">14</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">2</column>
+            <column name="question_id">15</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">3</column>
+            <column name="question_id">16</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">5</column>
+            <column name="question_id">17</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">5</column>
+            <column name="question_id">18</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">7</column>
+            <column name="question_id">19</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">1</column>
+            <column name="question_id">20</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">4</column>
+            <column name="question_id">21</column>
+        </insert>
+
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">2</column>
+            <column name="question_id">22</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">6</column>
+            <column name="question_id">23</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">7</column>
+            <column name="question_id">24</column>
+        </insert>
+        <insert tableName="answer_to_question">
+            <column name="attempt_id">1</column>
+            <column name="answer_id">1</column>
+            <column name="question_id">25</column>
         </insert>
     </changeSet>
 

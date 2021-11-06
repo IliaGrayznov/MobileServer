@@ -16,7 +16,7 @@
             </column>
             <column name="question_text" type="clob"></column>
             <column name="plus" type="boolean"></column>
-            <column name="factor_id" type="bigserial">
+            <column name="factor_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_factor" references="factor(id)"/>
             </column>
         </createTable>
@@ -52,6 +52,132 @@
             <column name="question_text">Мне бывает трудно завершить начатое</column>
             <column name="plus">false</column>
             <column name="factor_id">3</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="question_3" author="ilia">
+        <insert tableName="question">
+            <column name="number">6</column>
+            <column name="question_text"> Я не могу отказаться от начатого дела, даже если оно мне «не по зубам»</column>
+            <column name="plus">true</column>
+            <column name="factor_id">4</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">7</column>
+            <column name="question_text">Я знаю, чего хочу, и делаю все, чтобы этого добиться</column>
+            <column name="plus">true</column>
+            <column name="factor_id">2</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">8</column>
+            <column name="question_text">Я заранее выстраиваю план предстоящего дня</column>
+            <column name="plus">true</column>
+            <column name="factor_id">1</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">9</column>
+            <column name="question_text">Мне более важно то, что я делаю и переживаю в данный момент, а не то, что будет или было</column>
+            <column name="plus">true</column>
+            <column name="factor_id">6</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">10</column>
+            <column name="question_text">Я могу начать делать несколько дел и ни одно из них не закончить</column>
+            <column name="plus">false</column>
+            <column name="factor_id">3</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">11</column>
+            <column name="question_text">Я планирую мои повседневные дела согласно определенным принципам</column>
+            <column name="plus">true</column>
+            <column name="factor_id">1</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">12</column>
+            <column name="question_text">Я считаю себя человеком, живущим «здесь-и-сейчас»</column>
+            <column name="plus">true</column>
+            <column name="factor_id">6</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">13</column>
+            <column name="question_text">Я не могу перейти к другому делу, если не завершил предыдущего</column>
+            <column name="plus">true</column>
+            <column name="factor_id">4</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">14</column>
+            <column name="question_text">Я считаю себя целенаправленным человеком</column>
+            <column name="plus">true</column>
+            <column name="factor_id">2</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">15</column>
+            <column name="question_text">Вместо того чтобы заниматься делами, я часто попусту трачу время</column>
+            <column name="plus">false</column>
+            <column name="factor_id">3</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">16</column>
+            <column name="question_text">Мне нравится вести дневник и фиксировать в нем происходящее со мной</column>
+            <column name="plus">true</column>
+            <column name="factor_id">5</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">17</column>
+            <column name="question_text">Иногда я даже не могу заснуть, вспомнив о недоделанных делах</column>
+            <column name="plus">true</column>
+            <column name="factor_id">4</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">18</column>
+            <column name="question_text">У меня есть к чему стремиться</column>
+            <column name="plus">true</column>
+            <column name="factor_id">2</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">19</column>
+            <column name="question_text">Мне нравится пользоваться ежедневником и иными средствами планирования времени</column>
+            <column name="plus">true</column>
+            <column name="factor_id">5</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">20</column>
+            <column name="question_text">Моя жизнь направлена на достижение определенных результатов</column>
+            <column name="plus">true</column>
+            <column name="factor_id">5</column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="question_4" author="ilia">
+        <insert tableName="question">
+            <column name="number">21</column>
+            <column name="question_text">У меня бывают трудности с упорядочением моих дел</column>
+            <column name="plus">false</column>
+            <column name="factor_id">3</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">22</column>
+            <column name="question_text">Мне нравится писать отчеты по итогам работы</column>
+            <column name="plus">true</column>
+            <column name="factor_id">5</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">23</column>
+            <column name="question_text">Я ни к чему не стремлюсь</column>
+            <column name="plus">false</column>
+            <column name="factor_id">2</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">24</column>
+            <column name="question_text">Если я не закончил какое-то дело, то это не выходит у меня из головы</column>
+            <column name="plus">true</column>
+            <column name="factor_id">4</column>
+        </insert>
+        <insert tableName="question">
+            <column name="number">25</column>
+            <column name="question_text">У меня есть главная цель в жизни</column>
+            <column name="plus">true</column>
+            <column name="factor_id">2</column>
         </insert>
     </changeSet>
 

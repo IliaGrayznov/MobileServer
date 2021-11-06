@@ -12,11 +12,11 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_result_id" />
             </column>
             <column name="description" type="clob"></column>
-            <column name="factor_id" type="bigserial">
+            <column name="factor_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_factor_result" references="factor(id)"/>
             </column>
-            <column name="attempt_id" type="bigserial">
-                <constraints nullable="false" foreignKeyName="fk_attempt_result" references="attempt(id)"/>
+            <column name="attempt_id" type="bigint">
+                <constraints nullable="true" foreignKeyName="fk_attempt_result" references="attempt(id)"/>
             </column>
         </createTable>
     </changeSet>

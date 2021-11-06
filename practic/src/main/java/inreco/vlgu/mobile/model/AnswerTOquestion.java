@@ -16,10 +16,6 @@ public class AnswerTOquestion {
 
 
     @ManyToOne
-    @JsonManagedReference
-    private User user;
-
-    @ManyToOne
     private Question question;
 
     @ManyToOne
@@ -33,9 +29,8 @@ public class AnswerTOquestion {
     public AnswerTOquestion() {
     }
 
-    public AnswerTOquestion(long id, User user, Question question, Answer answer, Attempt attempt) {
+    public AnswerTOquestion(long id, Question question, Answer answer, Attempt attempt) {
         this.id = id;
-        this.user = user;
         this.question = question;
         this.answer = answer;
         this.attempt = attempt;
@@ -49,13 +44,6 @@ public class AnswerTOquestion {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public Question getQuestion() {
         return question;

@@ -60,7 +60,7 @@
         </insert>
         <insert tableName="factor">
             <column name="name">Самоорганизация</column>
-            <column name="m_critic_male">19.99</column>
+            <column name="m_critic_male">9.99</column>
             <column name="q_critic_male">5</column>
             <column name="m_critic_female">9.49</column>
             <column name="q_critic_female">4.14</column>

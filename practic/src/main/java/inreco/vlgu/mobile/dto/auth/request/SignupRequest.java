@@ -8,11 +8,14 @@ public class SignupRequest {
     @NotBlank
     private String username;
 
-
-    private Set<String> role;
-
     @NotBlank
     private String password;
+
+    @NotBlank
+    private Integer age;
+
+    @NotBlank
+    private boolean sexM;
 
     public String getUsername() {
         return username;
@@ -31,11 +34,19 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Set<String> getRole() {
-        return this.role;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setRole(Set<String> role) {
-        this.role = role;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public boolean isSexM() {
+        return sexM;
+    }
+
+    public void setSexM(boolean sexM) {
+        this.sexM = sexM;
     }
 }

@@ -15,8 +15,6 @@ public class Attempt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "number")
-    private Integer number;
 
     @Column(name = "finished")
     private boolean finished;
@@ -25,11 +23,13 @@ public class Attempt {
     @JsonManagedReference
     private User user;
 
-    @OneToMany (fetch = FetchType.LAZY)
+    @OneToMany (fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinColumn(name = "attempt_id")
     private List<Result> results;
 
-    @OneToMany (fetch = FetchType.LAZY)
+    @OneToMany (fetch = FetchType.LAZY,
+                cascade = CascadeType.ALL)
     @JoinColumn(name = "attempt_id")
     @JsonBackReference
     private List<AnswerTOquestion> anserTOquestionList;
@@ -44,14 +44,6 @@ public class Attempt {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
     }
 
     public boolean isFinished() {

@@ -3,12 +3,12 @@ package inreco.vlgu.mobile.controllers;
 
 import inreco.vlgu.mobile.dto.auth.response.MessageResponse;
 import inreco.vlgu.mobile.dto.give_answer.InputRequest;
-import inreco.vlgu.mobile.dto.simple.AnswerResponse;
+import inreco.vlgu.mobile.dto.simple.*;
 import inreco.vlgu.mobile.dto.auth.request.SignupRequest;
-import inreco.vlgu.mobile.dto.simple.QuestionResponse;
 import inreco.vlgu.mobile.model.*;
 import inreco.vlgu.mobile.repository.*;
 
+import inreco.vlgu.mobile.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,60 +27,66 @@ public class TestController {
     UserRepository userRepository;
 
     @Autowired
-    QuestionRepository questionRepository;
-
-    @Autowired
-    AnswerRepository answerRepository;
-
-    @Autowired
-    AnswerTOquestionRepository answerTOquestionRepository;
-
-    @Autowired
-    AttemptRepository attemptRepository;
+    TestService testService;
 
 
-
-    @GetMapping("/all")
-    public String allAccess() {
-        return "Public Content.";
-    }
-
-    @GetMapping("/client")
-   // @PreAuthorize("hasRole('client') or hasRole('master') or hasRole('admin')")
-    public String userAccess() {
-        return "Client Content.";
-    }
-
-
-    @GetMapping("/admin")
-   // @PreAuthorize("hasRole('admin')")
-    public String adminAccess() {
-        return "Admin Board.";
-    }
 
     @GetMapping("/questions")
     public ResponseEntity<?>  questions() {
-        return ResponseEntity.ok(new QuestionResponse(questionRepository.findAll()));
+        return ResponseEntity.ok(new QuestionResponse(testService.getAllQuestions()));
+    }
+
+    @GetMapping("/someQuestions")
+    public ResponseEntity<?>  someQuestions(@Valid @RequestBody SomeQuestionRequest someQuestionRequest) {
+        return ResponseEntity.ok(new QuestionResponse(testService.getSomeQuestions(someQuestionRequest.getFirst(),someQuestionRequest.getLast())));
     }
 
     @GetMapping("/answers")
     public ResponseEntity<?>  answers() {
-        return ResponseEntity.ok(new AnswerResponse(answerRepository.findAll()));
+        return ResponseEntity.ok(new AnswerResponse(testService.getAnswers()));
+    }
+
+    @GetMapping("/attempts")
+    public ResponseEntity<?>  attempts(Principal principal) {
+        User user = userRepository.findByUsername(principal.getName()).get();
+        return ResponseEntity.ok(new AttemptResponse(testService.getUserAttempts(user)));
+    }
+
+   @PostMapping("/startAttempt")
+    public ResponseEntity<?>  startAttempt(Principal principal) {
+       User user = userRepository.findByUsername(principal.getName()).get();
+       if(testService.startTest(user))
+           return ResponseEntity.ok(new MessageResponse("Test started!"));
+       else
+           return ResponseEntity
+                   .badRequest()
+                   .body(new MessageResponse("Error: Something went wrong("));
     }
 
     @PostMapping("/giveAnswer")
     public ResponseEntity<?> giveAnswer(@Valid @RequestBody InputRequest inputRequest, Principal principal) {
-        //TO DO: вынести в сервис и доработать. сделать у юзера поле с id текущей попытки ну или брать исходя из статутса финиша
-        Question q = questionRepository.getById(inputRequest.getIdQ());
-        Answer a = answerRepository.getById(inputRequest.getIdA());
         User user = userRepository.findByUsername(principal.getName()).get();
-        Attempt attempt = attemptRepository.getCurrentAttempt(user.getId());
-        AnswerTOquestion aTq = new AnswerTOquestion();
-        aTq.setUser(user);
-        aTq.setAnswer(a);
-        aTq.setQuestion(q);
-        aTq.setAttempt(attempt);
-        answerTOquestionRepository.save(aTq);
-        return ResponseEntity.ok(new MessageResponse("Answer registered successfully!"));
+        if(testService.giveAnswer(user,inputRequest.getIdQ(),inputRequest.getIdA()))
+            return ResponseEntity.ok(new MessageResponse("Answer registered successfully!"));
+        else
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Something went wrong("));
+    }
+
+    @PostMapping("/finishAttempt")
+    public ResponseEntity<?>  finishAttempt(Principal principal) {
+        User user = userRepository.findByUsername(principal.getName()).get();
+        if(testService.finishTest(user))
+            return ResponseEntity.ok(new MessageResponse("Test finished!"));
+        else
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Not all questions have answers("));
+    }
+
+    @PostMapping("/getResults")
+    public ResponseEntity<?>  getResults(@Valid @RequestBody AttemptRequestID attemptRequestID) {
+        return ResponseEntity.ok(new ResultResponse(testService.results(attemptRequestID.getId())));
     }
 }

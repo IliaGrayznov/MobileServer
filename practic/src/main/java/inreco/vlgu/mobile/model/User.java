@@ -19,6 +19,10 @@ public class User {
     private String username;
     @Column(name = "password",nullable = false)
     private String password;
+    @Column(name = "age")
+    private Integer age;
+    @Column(name = "sex_m")
+    private boolean sex_m;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -34,9 +38,11 @@ public class User {
     public User() {
     }
 
-    public User( String username, String password) {
+    public User(String username, String password, Integer age, boolean sexM) {
         this.username = username;
         this.password = password;
+        this.age = age;
+        this.sex_m = sexM;
     }
 
     public long getId() {
@@ -78,6 +84,22 @@ public class User {
 
     public void setAttempts(List<Attempt> attempts) {
         this.attempts = attempts;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public boolean isSexM() {
+        return sex_m;
+    }
+
+    public void setSexM(boolean sexM) {
+        this.sex_m = sexM;
     }
 
     @Override

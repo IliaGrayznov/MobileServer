@@ -11,10 +11,10 @@
             <column name="id" type="bigserial" autoIncrement="true" >
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user-role_id" />
             </column>
-            <column name="user_id" type="bigserial">
+            <column name="user_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_user" references="user(id)"/>
             </column>
-            <column name="role_id" type="bigserial">
+            <column name="role_id" type="bigint">
                 <constraints nullable="false" foreignKeyName="fk_role" references="role(id)"/>
             </column>
         </createTable>

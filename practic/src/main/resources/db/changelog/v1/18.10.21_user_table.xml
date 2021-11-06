@@ -16,7 +16,7 @@
             </column>
             <column name="password" type="TEXT"></column>
             <column name="age" type="int"></column>
-            <column name="sexM" type="boolean"></column>
+            <column name="sex_m" type="boolean"></column>
         </createTable>
     </changeSet>
 
@@ -26,13 +26,13 @@
             <column name="username">admin</column>
             <column name="password">$2a$10$eJGaKQhfPi7t/UYcluBwLOnhgYGpZv1r4SFPSd2BvA2tVJWGSbFNa</column>
             <column name="age">37</column>
-            <column name="sexM">true</column>
+            <column name="sex_m">true</column>
         </insert>
         <insert tableName="user">
             <column name="username">mortal</column>
             <column name="password">$2a$10$z8/txvWANw/AzmKOJR5TAeKZ2vPVlauQd/JU/kWSvE66fzLWpS6AO</column>
             <column name="age">20</column>
-            <column name="sexM">true</column>
+            <column name="sex_m">true</column>
         </insert>
     </changeSet>
 
