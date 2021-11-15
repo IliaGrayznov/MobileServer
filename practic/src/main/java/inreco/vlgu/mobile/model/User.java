@@ -1,6 +1,7 @@
 package inreco.vlgu.mobile.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ public class User {
     @Column(name = "username", unique = true)
     private String username;
     @Column(name = "password",nullable = false)
+    @JsonIgnore
     private String password;
     @Column(name = "age")
     private Integer age;

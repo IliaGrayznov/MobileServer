@@ -9,6 +9,7 @@ import inreco.vlgu.mobile.model.*;
 import inreco.vlgu.mobile.repository.*;
 
 import inreco.vlgu.mobile.service.TestService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,28 +33,33 @@ public class TestController {
 
 
     @GetMapping("/questions")
-    public ResponseEntity<?>  questions() {
+    @ApiOperation("Возвращает список всех вопросов")
+    public ResponseEntity<QuestionResponse>  questions() {
         return ResponseEntity.ok(new QuestionResponse(testService.getAllQuestions()));
     }
 
     @GetMapping("/someQuestions")
-    public ResponseEntity<?>  someQuestions(@Valid @RequestBody SomeQuestionRequest someQuestionRequest) {
+    @ApiOperation("Возвращает список вопросов с first (включая)  по last (не включая)")
+    public ResponseEntity<QuestionResponse>  someQuestions(@Valid @RequestBody SomeQuestionRequest someQuestionRequest) {
         return ResponseEntity.ok(new QuestionResponse(testService.getSomeQuestions(someQuestionRequest.getFirst(),someQuestionRequest.getLast())));
     }
 
     @GetMapping("/answers")
-    public ResponseEntity<?>  answers() {
+    @ApiOperation("Возвращает список всех ответов")
+    public ResponseEntity<AnswerResponse>  answers() {
         return ResponseEntity.ok(new AnswerResponse(testService.getAnswers()));
     }
 
     @GetMapping("/attempts")
-    public ResponseEntity<?>  attempts(Principal principal) {
+    @ApiOperation("Возвращает список всех попыток пользователя. Результаты прилагаются, где это возможно")
+    public ResponseEntity<AttemptResponse>  attempts(Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
         return ResponseEntity.ok(new AttemptResponse(testService.getUserAttempts(user)));
     }
 
    @PostMapping("/startAttempt")
-    public ResponseEntity<?>  startAttempt(Principal principal) {
+   @ApiOperation("Создает у пользователя новую попытку. Если предыдущая не завершена то удаляет ее")
+    public ResponseEntity<MessageResponse>  startAttempt(Principal principal) {
        User user = userRepository.findByUsername(principal.getName()).get();
        if(testService.startTest(user))
            return ResponseEntity.ok(new MessageResponse("Test started!"));
@@ -64,7 +70,7 @@ public class TestController {
     }
 
     @PostMapping("/giveAnswer")
-    public ResponseEntity<?> giveAnswer(@Valid @RequestBody InputRequest inputRequest, Principal principal) {
+    public ResponseEntity<MessageResponse> giveAnswer(@Valid @RequestBody InputRequest inputRequest, Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
         if(testService.giveAnswer(user,inputRequest.getIdQ(),inputRequest.getIdA()))
             return ResponseEntity.ok(new MessageResponse("Answer registered successfully!"));
@@ -75,7 +81,8 @@ public class TestController {
     }
 
     @PostMapping("/finishAttempt")
-    public ResponseEntity<?>  finishAttempt(Principal principal) {
+    @ApiOperation("Завершает попытку, если ответы есть на все вопросы")
+    public ResponseEntity<MessageResponse>  finishAttempt(Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
         if(testService.finishTest(user))
             return ResponseEntity.ok(new MessageResponse("Test finished!"));
@@ -86,7 +93,8 @@ public class TestController {
     }
 
     @PostMapping("/getResults")
-    public ResponseEntity<?>  getResults(@Valid @RequestBody AttemptRequestID attemptRequestID) {
+    @ApiOperation("Вычсчитывает результаты попытки")
+    public ResponseEntity<ResultResponse>  getResults(@Valid @RequestBody AttemptRequestID attemptRequestID) {
         return ResponseEntity.ok(new ResultResponse(testService.results(attemptRequestID.getId())));
     }
 }
