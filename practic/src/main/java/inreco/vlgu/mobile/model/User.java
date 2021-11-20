@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +23,7 @@ public class User {
     @JsonIgnore
     private String password;
     @Column(name = "age")
-    private Integer age;
+    private Date age;
     @Column(name = "sex_m")
     private boolean sex_m;
     @ManyToMany(fetch = FetchType.LAZY)
@@ -40,7 +41,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, Integer age, boolean sexM) {
+    public User(String username, String password, Date age, boolean sexM) {
         this.username = username;
         this.password = password;
         this.age = age;
@@ -88,11 +89,11 @@ public class User {
         this.attempts = attempts;
     }
 
-    public Integer getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 

@@ -1,6 +1,6 @@
 package inreco.vlgu.mobile.dto.auth.request;
 
-import java.util.Set;
+import java.sql.Date;
 
 import javax.validation.constraints.*;
 
@@ -12,7 +12,7 @@ public class SignupRequest {
     private String password;
 
     @NotBlank
-    private Integer age;
+    private Date age;
 
     @NotBlank
     private boolean sexM;
@@ -34,11 +34,11 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public Integer getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
