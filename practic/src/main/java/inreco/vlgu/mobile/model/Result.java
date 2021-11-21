@@ -17,6 +17,9 @@ public class Result {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "points")
+    private Integer points;
+
     @ManyToOne
     private Factor factor;
 
@@ -25,10 +28,11 @@ public class Result {
     public Result() {
     }
 
-    public Result(Integer id, String description, Factor factor) {
+    public Result(Integer id, String description, Factor factor, Integer points) {
         this.id = id;
         this.description = description;
         this.factor = factor;
+        this.points = points;
     }
 
     public long getId() {
@@ -55,4 +59,11 @@ public class Result {
         this.factor = factor;
     }
 
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 }

@@ -18,15 +18,11 @@
             <column name="attempt_id" type="bigint">
                 <constraints nullable="true" foreignKeyName="fk_attempt_result" references="attempt(id)"/>
             </column>
+            <column name="points" type="int">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 
-    <changeSet id="result_2" author="ilia">
-        <insert tableName="result">
-            <column name="description">все плохо</column>
-            <column name="factor_id">1</column>
-            <column name="attempt_id">1</column>
-        </insert>
-    </changeSet>
 
 </databaseChangeLog>

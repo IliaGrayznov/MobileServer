@@ -149,6 +149,7 @@ public class TestService  {
                            }
                            Result r1 = new Result();
                            r1.setFactor(f);
+                           r1.setPoints(first);
                            System.out.println("first : " + first + " firstMax : "+firstMax+ " firstMin : "+ firstMin);
                            if(first>firstMax) {
                                r1.setDescription("Вы достаточно планомерны, предпочитаете последовательно" +
@@ -179,6 +180,7 @@ public class TestService  {
                            }
                            Result r2 = new Result();
                            r2.setFactor(f);
+                           r2.setPoints(second);
                            System.out.println("second : " + second + " secondMax : "+secondMax+ " secondMin : "+ secondMin);
                            if(second>secondMax) {
                                r2.setDescription("Вы целеустремленны и целенаправленны, знаете, чего хотите" +
@@ -212,6 +214,7 @@ public class TestService  {
                            }
                            Result r3 = new Result();
                            r3.setFactor(f);
+                           r3.setPoints(third);
                            System.out.println("third : " + third + " thirdMax : "+thirdMax+ " thirdMin : "+ thirdMin);
                            if(third>thirdMax) {
                                r3.setDescription("Вас можно охарактеризовать как волевого и организованного" +
@@ -244,6 +247,7 @@ public class TestService  {
                            }
                            Result r4 = new Result();
                            r4.setFactor(f);
+                           r4.setPoints(fourth);
                            System.out.println("fourth : " + fourth + " fourthMax : "+fourthMax+ " fourthMin : "+ fourthMin);
                            if(fourth>fourthMax) {
                                r4.setDescription("Вы исполнительный и обязательный человек, стремитесь всеми" +
@@ -278,6 +282,7 @@ public class TestService  {
                            }
                            Result r5 = new Result();
                            r5.setFactor(f);
+                           r5.setPoints(fifth);
                            System.out.println("fifth : " + fifth + " fifthMax : "+fifthMax+ " fifthMin : "+ fifthMin);
                            if(fifth>fifthMax) {
                                r5.setDescription("Вы обладаете высоким уровнем самоорганизации, при" +
@@ -313,6 +318,7 @@ public class TestService  {
                            }
                            Result r6 = new Result();
                            r6.setFactor(f);
+                           r6.setPoints(sixth);
                            System.out.println("sixth : " + sixth + " sixthMax : "+sixthMax+ " sixthMin : "+ sixthMin);
                            if(sixth>sixthMax) {
                                r6.setDescription("Вы склонны фиксироваться на происходящем с Вами" +
@@ -346,6 +352,7 @@ public class TestService  {
                            }
                            Result r7 = new Result();
                            r7.setFactor(f);
+                           r7.setPoints(seventh);
                            System.out.println("seventh : " + seventh + " seventhMax : "+seventhMax+ " seventhMin : "+ seventhMin);
                            if(seventh>seventhMax) {
                                r7.setDescription("Вам свойственно видеть и ставить цели, планировать свою деятельность, в том числе с помощью внешних средств, и, проявляя волевые" +
