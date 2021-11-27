@@ -71,15 +71,15 @@ public class TestService  {
     }
 
     @Transactional
-    public boolean finishTest(User user)  {
+    public Long finishTest(User user)  {
         Attempt attempt = attemptRepository.getCurrentAttempt(user.getId());
         if(attempt!=null && attempt.getAnserTOquestionList().size()==questionRepository.count()) {
             attempt.setFinished(true);
             attemptRepository.save(attempt);
-            return true;
+            return attempt.getId();
         }
         else
-            return false;
+            return null;
     }
 
     @Transactional

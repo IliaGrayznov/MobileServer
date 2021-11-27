@@ -81,19 +81,20 @@ public class TestController {
     }
 
     @PostMapping("/finishAttempt")
-    @ApiOperation("Завершает попытку, если ответы есть на все вопросы")
-    public ResponseEntity<MessageResponse>  finishAttempt(Principal principal) {
+    @ApiOperation("Завершает попытку, если ответы есть на все вопросы, возвращая id это попытки")
+    public ResponseEntity<?>  finishAttempt(Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
-        if(testService.finishTest(user))
-            return ResponseEntity.ok(new MessageResponse("Test finished!"));
+        Long result = testService.finishTest(user);
+        if(result!=null)
+            return ResponseEntity.ok(new AttemptRequestID(result));
         else
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Not all questions have answers("));
+                    .body(new MessageResponse("Error: Not all questions have answers( or maybe you have no attempt to finish"));
     }
 
     @PostMapping("/getResults")
-    @ApiOperation("Вычсчитывает результаты попытки")
+    @ApiOperation("Высчитывает результаты попытки")
     public ResponseEntity<ResultResponse>  getResults(@Valid @RequestBody AttemptRequestID attemptRequestID) {
         return ResponseEntity.ok(new ResultResponse(testService.results(attemptRequestID.getId())));
     }
