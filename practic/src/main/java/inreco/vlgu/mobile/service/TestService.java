@@ -3,13 +3,15 @@ package inreco.vlgu.mobile.service;
 
 import inreco.vlgu.mobile.model.*;
 import inreco.vlgu.mobile.repository.*;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.ArrayList;
+
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -75,6 +77,7 @@ public class TestService  {
         Attempt attempt = attemptRepository.getCurrentAttempt(user.getId());
         if(attempt!=null && attempt.getAnserTOquestionList().size()==questionRepository.count()) {
             attempt.setFinished(true);
+            attempt.setDate(new Date(Calendar.getInstance().getTime().getTime()));
             attemptRepository.save(attempt);
             return attempt.getId();
         }

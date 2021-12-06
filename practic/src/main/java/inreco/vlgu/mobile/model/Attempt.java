@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,9 @@ public class Attempt {
 
     @Column(name = "finished")
     private boolean finished;
+
+    @Column(name = "date")
+    private Date date;
 
     @ManyToOne
     @JsonManagedReference
@@ -76,5 +80,13 @@ public class Attempt {
 
     public void setAnserTOquestionList(List<AnswerTOquestion> anserTOquestionList) {
         this.anserTOquestionList = anserTOquestionList;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

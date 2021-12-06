@@ -15,6 +15,7 @@
                 <constraints nullable="false" foreignKeyName="fk_user_attempt" references="user(id)"/>
             </column>
             <column name="finished" type="boolean"></column>
+            <column name="date" type="date"></column>
         </createTable>
     </changeSet>
 
@@ -22,6 +23,7 @@
         <insert tableName="attempt">
             <column name="user_id">2</column>
             <column name="finished">false</column>
+            <column name="date">22-09-1941</column>
         </insert>
     </changeSet>
 
