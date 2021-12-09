@@ -75,6 +75,10 @@ public class AdminService {
         return resultRepository.findAll();
     }
 
+    public List<Factor> getFactors()  {
+        return factorRepository.findAll();
+    }
+
     public List<Result> getMenResults()  {
         return attemptRepository.getMenResults();
     }

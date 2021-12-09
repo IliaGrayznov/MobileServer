@@ -3,6 +3,7 @@ package inreco.vlgu.mobile.controllers;
 
 
 import inreco.vlgu.mobile.dto.admin.ChangeTextRequest;
+import inreco.vlgu.mobile.dto.admin.FuctorResponse;
 import inreco.vlgu.mobile.dto.admin.QuestionCreaterRequest;
 import inreco.vlgu.mobile.dto.admin.QuestionDeleteRequest;
 import inreco.vlgu.mobile.dto.auth.response.MessageResponse;
@@ -69,6 +70,12 @@ public class AdminController {
     @ApiOperation("Возвращает все результаты тестов")
     public ResponseEntity<ResultResponse> statistic() {
         return ResponseEntity.ok(new ResultResponse(adminService.getAllResults()));
+    }
+
+    @GetMapping("/factors")
+    @ApiOperation("Возвращает все факторы")
+    public ResponseEntity<FuctorResponse> factors() {
+        return ResponseEntity.ok(new FuctorResponse(adminService.getFactors()));
     }
 
     @GetMapping("/statistic/globalM")
