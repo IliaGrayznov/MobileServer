@@ -112,7 +112,7 @@
         </insert>
         <insert tableName="question">
             <column name="number">15</column>
-            <column name="question_text">Вместо того чтобы заниматься делами, я часто попусту трачу время</column>
+            <column name="question_text">Вместо того, чтобы заниматься делами, я часто попусту трачу время</column>
             <column name="plus">false</column>
             <column name="factor_id">3</column>
         </insert>
